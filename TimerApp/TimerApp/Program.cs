@@ -18,7 +18,7 @@ namespace TimerApp
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-            Application.Run(new stopwatchForm());
+            Application.Run(new mainForm());
         }
     }
 }

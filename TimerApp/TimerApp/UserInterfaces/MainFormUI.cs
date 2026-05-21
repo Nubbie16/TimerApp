@@ -9,14 +9,24 @@
 
 namespace TimerApp
 {
-    public partial class stopwatchForm : Form
+    public partial class mainForm : Form
     {
-        public stopwatchForm()
+        public mainForm()
         {
             InitializeComponent();
         }
 
         private void main_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabControl_Click(object sender, EventArgs e)
+        {
+            this.Text = tabControl.SelectedTab.Text;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

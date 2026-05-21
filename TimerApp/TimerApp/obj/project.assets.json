@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projects\\TimerApp\\TimerApp\\TimerApp.csproj",
+      "projectUniqueName": "C:\\Projects\\TimerApp\\TimerApp\\TimerApp\\TimerApp.csproj",
       "projectName": "TimerApp",
-      "projectPath": "C:\\Projects\\TimerApp\\TimerApp\\TimerApp.csproj",
+      "projectPath": "C:\\Projects\\TimerApp\\TimerApp\\TimerApp\\TimerApp.csproj",
       "packagesPath": "C:\\Users\\eckar\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\TimerApp\\TimerApp\\obj\\",
+      "outputPath": "C:\\Projects\\TimerApp\\TimerApp\\TimerApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
