@@ -14,7 +14,21 @@ using System.Threading.Tasks;
 
 namespace TimerApp.Models
 {
-    internal class Stopwatch
+    public class Stopwatch
     {
+        public int laps = 0;
+        public int hour = 0;
+        public int minute = 0;
+        public int second = 0;
+        public string lapTime = "";
+        public string endTime = "";
+
+
+    public string GetLapTime(int hr, int min, int sec, int lap = 0)
+        {
+
+
+            return lapTime;
+        }
     }
 }

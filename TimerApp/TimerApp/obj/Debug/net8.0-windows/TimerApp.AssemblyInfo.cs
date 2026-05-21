@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TimerApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+62c71486cf93c9de565a7e71736784bfc6cf701f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ffa4ab567477899caa047bc9f7c33af1f4dfa2dc")]
 [assembly: System.Reflection.AssemblyProductAttribute("TimerApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TimerApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

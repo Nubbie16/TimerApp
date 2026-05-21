@@ -7,6 +7,8 @@
 // Creation Date: May 18, 2026
 // GitHub Repository: https://github.com/Nubbie16/TimerApp
 
+using System.Drawing;
+
 namespace TimerApp
 {
     public partial class mainForm : Form
@@ -16,18 +18,24 @@ namespace TimerApp
             InitializeComponent();
         }
 
-        private void main_Load(object sender, EventArgs e)
-        {
+        //private void main_Load(object sender, EventArgs e)
+        //{
 
-        }
+        //}
 
         private void tabControl_Click(object sender, EventArgs e)
         {
             this.Text = tabControl.SelectedTab.Text;
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void startStopwatchBtn_Click(object sender, EventArgs e)
         {
+            startStopwatchBtn.Text = "&Lap";
+        }
+
+        private void stopStopwatchBtn_Click(object sender, EventArgs e)
+        {
+            startStopwatchBtn.Text = "&Start";
 
         }
     }
