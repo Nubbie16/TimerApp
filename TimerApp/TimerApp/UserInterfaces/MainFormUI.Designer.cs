@@ -33,10 +33,15 @@
             stopStopwatchBtn = new Button();
             stopwatchTimer = new System.Windows.Forms.Timer(components);
             timeTableGV = new DataGridView();
+            lapCol = new DataGridViewTextBoxColumn();
+            startCol = new DataGridViewTextBoxColumn();
+            lapEndCol = new DataGridViewTextBoxColumn();
             tableLayoutPanel2 = new TableLayoutPanel();
             resetBtn = new Button();
             tabControl = new TabControl();
             stopTab = new TabPage();
+            tableLayoutPanel6 = new TableLayoutPanel();
+            currentStopwatchLbl = new Label();
             downTab = new TabPage();
             tableLayoutPanel5 = new TableLayoutPanel();
             tableLayoutPanel1 = new TableLayoutPanel();
@@ -70,13 +75,11 @@
             comboBox1 = new ComboBox();
             countSetLbl = new Label();
             countdownTimer = new System.Windows.Forms.Timer(components);
-            lapCol = new DataGridViewTextBoxColumn();
-            startCol = new DataGridViewTextBoxColumn();
-            lapEndCol = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)timeTableGV).BeginInit();
             tableLayoutPanel2.SuspendLayout();
             tabControl.SuspendLayout();
             stopTab.SuspendLayout();
+            tableLayoutPanel6.SuspendLayout();
             downTab.SuspendLayout();
             tableLayoutPanel5.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -123,12 +126,36 @@
             timeTableGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             timeTableGV.Columns.AddRange(new DataGridViewColumn[] { lapCol, startCol, lapEndCol });
             timeTableGV.Dock = DockStyle.Fill;
-            timeTableGV.Location = new Point(3, 3);
+            timeTableGV.Location = new Point(3, 47);
             timeTableGV.Name = "timeTableGV";
             timeTableGV.RowHeadersVisible = false;
-            timeTableGV.Size = new Size(265, 290);
+            timeTableGV.Size = new Size(259, 240);
             timeTableGV.TabIndex = 3;
             timeTableGV.Visible = false;
+            // 
+            // lapCol
+            // 
+            lapCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            lapCol.HeaderText = "Lap Count";
+            lapCol.Name = "lapCol";
+            lapCol.Resizable = DataGridViewTriState.False;
+            lapCol.Width = 87;
+            // 
+            // startCol
+            // 
+            startCol.HeaderText = "Start";
+            startCol.Name = "startCol";
+            startCol.Resizable = DataGridViewTriState.False;
+            startCol.SortMode = DataGridViewColumnSortMode.NotSortable;
+            startCol.Width = 90;
+            // 
+            // lapEndCol
+            // 
+            lapEndCol.HeaderText = "Lap/End";
+            lapEndCol.Name = "lapEndCol";
+            lapEndCol.Resizable = DataGridViewTriState.False;
+            lapEndCol.SortMode = DataGridViewColumnSortMode.NotSortable;
+            lapEndCol.Width = 90;
             // 
             // tableLayoutPanel2
             // 
@@ -178,7 +205,7 @@
             // 
             // stopTab
             // 
-            stopTab.Controls.Add(timeTableGV);
+            stopTab.Controls.Add(tableLayoutPanel6);
             stopTab.Controls.Add(tableLayoutPanel2);
             stopTab.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             stopTab.Location = new Point(4, 24);
@@ -188,6 +215,32 @@
             stopTab.TabIndex = 0;
             stopTab.Text = "Stopwatch";
             stopTab.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel6
+            // 
+            tableLayoutPanel6.ColumnCount = 1;
+            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel6.Controls.Add(currentStopwatchLbl, 0, 0);
+            tableLayoutPanel6.Controls.Add(timeTableGV, 0, 1);
+            tableLayoutPanel6.Dock = DockStyle.Fill;
+            tableLayoutPanel6.Location = new Point(3, 3);
+            tableLayoutPanel6.Name = "tableLayoutPanel6";
+            tableLayoutPanel6.RowCount = 2;
+            tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 15.1724138F));
+            tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 84.82758F));
+            tableLayoutPanel6.Size = new Size(265, 290);
+            tableLayoutPanel6.TabIndex = 6;
+            // 
+            // currentStopwatchLbl
+            // 
+            currentStopwatchLbl.Anchor = AnchorStyles.None;
+            currentStopwatchLbl.AutoSize = true;
+            currentStopwatchLbl.Font = new Font("Segoe UI", 22F);
+            currentStopwatchLbl.Location = new Point(68, 1);
+            currentStopwatchLbl.Name = "currentStopwatchLbl";
+            currentStopwatchLbl.Size = new Size(128, 41);
+            currentStopwatchLbl.TabIndex = 10;
+            currentStopwatchLbl.Text = "00:00:00";
             // 
             // downTab
             // 
@@ -355,10 +408,10 @@
             // 
             remainingLbl.Anchor = AnchorStyles.None;
             remainingLbl.AutoSize = true;
-            remainingLbl.Font = new Font("Segoe UI", 25F);
-            remainingLbl.Location = new Point(43, 173);
+            remainingLbl.Font = new Font("Segoe UI", 22F);
+            remainingLbl.Location = new Point(51, 176);
             remainingLbl.Name = "remainingLbl";
-            remainingLbl.Size = new Size(178, 46);
+            remainingLbl.Size = new Size(162, 41);
             remainingLbl.TabIndex = 9;
             remainingLbl.Text = "[hh:mm:ss]";
             // 
@@ -566,30 +619,6 @@
             countSetLbl.TabIndex = 15;
             countSetLbl.Text = "Countdown Settings";
             // 
-            // lapCol
-            // 
-            lapCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            lapCol.HeaderText = "Lap Count";
-            lapCol.Name = "lapCol";
-            lapCol.Resizable = DataGridViewTriState.False;
-            lapCol.Width = 87;
-            // 
-            // startCol
-            // 
-            startCol.HeaderText = "Start";
-            startCol.Name = "startCol";
-            startCol.Resizable = DataGridViewTriState.False;
-            startCol.SortMode = DataGridViewColumnSortMode.NotSortable;
-            startCol.Width = 90;
-            // 
-            // lapEndCol
-            // 
-            lapEndCol.HeaderText = "Lap/End";
-            lapEndCol.Name = "lapEndCol";
-            lapEndCol.Resizable = DataGridViewTriState.False;
-            lapEndCol.SortMode = DataGridViewColumnSortMode.NotSortable;
-            lapEndCol.Width = 90;
-            // 
             // mainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -606,6 +635,8 @@
             tableLayoutPanel2.ResumeLayout(false);
             tabControl.ResumeLayout(false);
             stopTab.ResumeLayout(false);
+            tableLayoutPanel6.ResumeLayout(false);
+            tableLayoutPanel6.PerformLayout();
             downTab.ResumeLayout(false);
             tableLayoutPanel5.ResumeLayout(false);
             tableLayoutPanel5.PerformLayout();
@@ -667,5 +698,7 @@
         private DataGridViewTextBoxColumn lapCol;
         private DataGridViewTextBoxColumn startCol;
         private DataGridViewTextBoxColumn lapEndCol;
+        private TableLayoutPanel tableLayoutPanel6;
+        private Label currentStopwatchLbl;
     }
 }

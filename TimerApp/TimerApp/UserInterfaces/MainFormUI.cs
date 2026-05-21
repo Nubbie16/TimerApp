@@ -8,7 +8,6 @@
 // GitHub Repository: https://github.com/Nubbie16/TimerApp
 
 using System.Diagnostics;
-using TimerApp.Models;
 
 namespace TimerApp
 {
@@ -16,6 +15,8 @@ namespace TimerApp
     {
         Stopwatch stopwatch = new Stopwatch();
         int lapCount = 0;
+
+        string currentStopwatch = "";
 
         public mainForm()
         {
@@ -30,26 +31,32 @@ namespace TimerApp
         private void StopwatchTimer_Tick(object sender, EventArgs e)
         {
             timeTableGV.Rows[lapCount].Cells["lapEndCol"].Value = stopwatch.
-                Elapsed.ToString(@"hh\:mm\:ss");
+                    Elapsed.ToString(@"hh\:mm\:ss");
+            currentStopwatchLbl.Text = stopwatch.Elapsed.ToString(@"hh\:mm\:ss");
         }
 
         private void startStopwatchBtn_Click(object sender, EventArgs e)
         {
 
-            if (stopwatch.IsRunning != true && stopwatch.ElapsedTicks <= 0)
+            if (stopwatch.IsRunning != true && stopwatch.ElapsedTicks <= 0)     //new stopwatch started
             {
                 startStopwatchBtn.Text = "&Lap";
                 stopwatch.Start();
                 stopwatchTimer.Start();
                 timeTableGV.Visible = true;
                 ShowNewLap();
-            } else if (stopwatch.IsRunning != true) 
+
+            } else if (stopwatch.IsRunning != true)                             //if stopwatch was "stopped" and sstarted back
             {
                 stopwatch.Start();
                 stopwatchTimer.Start();
-            } else {
+                startStopwatchBtn.Text = "&Lap";
+
+            }
+            else {                                                            //if user wanted to set a lap time
                 lapCount += 1;
                 ShowNewLap();
+
             }
         }
 
@@ -58,6 +65,7 @@ namespace TimerApp
             startStopwatchBtn.Text = "Res&ume";
             stopwatch.Stop();
             stopwatchTimer.Stop();
+
         }
 
         private void resetBtn_Click(object sender, EventArgs e)
@@ -68,15 +76,20 @@ namespace TimerApp
             stopwatchTimer.Stop();
             timeTableGV.Rows.Clear();
             lapCount = 0;
+            currentStopwatchLbl.Text = "00:00:00";
         }
 
         private void ShowNewLap()
         {
-            timeTableGV.Rows.Add(
-                lapCount + 1, 
-                stopwatch.Elapsed.ToString(@"hh\:mm\:ss"),
-                stopwatch.Elapsed.ToString(@"hh\:mm\:ss")
-                );
+            int rowIndex = timeTableGV.Rows.Add(
+                                    lapCount + 1, 
+                                    stopwatch.Elapsed.ToString(@"hh\:mm\:ss"),
+                                    stopwatch.Elapsed.ToString(@"hh\:mm\:ss")
+                                    );
+
+            timeTableGV.ClearSelection();
+            timeTableGV.Rows[rowIndex].Selected = true;
+            timeTableGV.FirstDisplayedScrollingRowIndex = rowIndex;         //Scrolls to current lap time
         }
 
     }
