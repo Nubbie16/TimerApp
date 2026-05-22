@@ -56,24 +56,6 @@
             startCountdownBtn = new Button();
             cancelCountdownBtn = new Button();
             remainingCountLbl = new Label();
-            settingsTab = new TabPage();
-            tableLayoutPanel4 = new TableLayoutPanel();
-            stopSetLbl = new Label();
-            comboBox7 = new ComboBox();
-            label7 = new Label();
-            comboBox6 = new ComboBox();
-            label6 = new Label();
-            comboBox5 = new ComboBox();
-            label5 = new Label();
-            comboBox4 = new ComboBox();
-            label4 = new Label();
-            comboBox3 = new ComboBox();
-            label3 = new Label();
-            comboBox2 = new ComboBox();
-            label2 = new Label();
-            label1 = new Label();
-            comboBox1 = new ComboBox();
-            countSetLbl = new Label();
             countdownTimer = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)timeTableGV).BeginInit();
             tableLayoutPanel2.SuspendLayout();
@@ -87,8 +69,6 @@
             ((System.ComponentModel.ISupportInitialize)minuteUD).BeginInit();
             ((System.ComponentModel.ISupportInitialize)hourUD).BeginInit();
             tableLayoutPanel3.SuspendLayout();
-            settingsTab.SuspendLayout();
-            tableLayoutPanel4.SuspendLayout();
             SuspendLayout();
             // 
             // startStopwatchBtn
@@ -119,6 +99,7 @@
             // 
             // stopwatchTimer
             // 
+            stopwatchTimer.Interval = 10;
             stopwatchTimer.Tick += StopwatchTimer_Tick;
             // 
             // timeTableGV
@@ -193,7 +174,6 @@
             // 
             tabControl.Controls.Add(stopTab);
             tabControl.Controls.Add(downTab);
-            tabControl.Controls.Add(settingsTab);
             tabControl.Dock = DockStyle.Fill;
             tabControl.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tabControl.Location = new Point(0, 0);
@@ -418,210 +398,6 @@
             remainingCountLbl.TabIndex = 9;
             remainingCountLbl.Text = "00:00:00.00";
             // 
-            // settingsTab
-            // 
-            settingsTab.Controls.Add(tableLayoutPanel4);
-            settingsTab.Location = new Point(4, 24);
-            settingsTab.Name = "settingsTab";
-            settingsTab.Size = new Size(271, 433);
-            settingsTab.TabIndex = 2;
-            settingsTab.Text = "Settings";
-            settingsTab.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanel4
-            // 
-            tableLayoutPanel4.ColumnCount = 2;
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.Controls.Add(stopSetLbl, 0, 0);
-            tableLayoutPanel4.Controls.Add(comboBox7, 1, 8);
-            tableLayoutPanel4.Controls.Add(label7, 0, 8);
-            tableLayoutPanel4.Controls.Add(comboBox6, 1, 7);
-            tableLayoutPanel4.Controls.Add(label6, 0, 7);
-            tableLayoutPanel4.Controls.Add(comboBox5, 1, 6);
-            tableLayoutPanel4.Controls.Add(label5, 0, 6);
-            tableLayoutPanel4.Controls.Add(comboBox4, 1, 5);
-            tableLayoutPanel4.Controls.Add(label4, 0, 5);
-            tableLayoutPanel4.Controls.Add(comboBox3, 1, 3);
-            tableLayoutPanel4.Controls.Add(label3, 0, 3);
-            tableLayoutPanel4.Controls.Add(comboBox2, 1, 2);
-            tableLayoutPanel4.Controls.Add(label2, 0, 2);
-            tableLayoutPanel4.Controls.Add(label1, 0, 1);
-            tableLayoutPanel4.Controls.Add(comboBox1, 1, 1);
-            tableLayoutPanel4.Controls.Add(countSetLbl, 0, 4);
-            tableLayoutPanel4.Dock = DockStyle.Fill;
-            tableLayoutPanel4.Location = new Point(0, 0);
-            tableLayoutPanel4.Name = "tableLayoutPanel4";
-            tableLayoutPanel4.RowCount = 9;
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 11.1076546F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 11.1120977F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 11.1121F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 11.1121F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 11.1076546F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 11.1120977F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 11.1121F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 11.1121F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 11.1121F));
-            tableLayoutPanel4.Size = new Size(271, 433);
-            tableLayoutPanel4.TabIndex = 0;
-            // 
-            // stopSetLbl
-            // 
-            stopSetLbl.Anchor = AnchorStyles.Left;
-            stopSetLbl.AutoSize = true;
-            tableLayoutPanel4.SetColumnSpan(stopSetLbl, 2);
-            stopSetLbl.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            stopSetLbl.Location = new Point(3, 13);
-            stopSetLbl.Name = "stopSetLbl";
-            stopSetLbl.Size = new Size(157, 21);
-            stopSetLbl.TabIndex = 14;
-            stopSetLbl.Text = "Stopwatch Settings";
-            // 
-            // comboBox7
-            // 
-            comboBox7.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            comboBox7.FormattingEnabled = true;
-            comboBox7.Location = new Point(138, 397);
-            comboBox7.Name = "comboBox7";
-            comboBox7.Size = new Size(130, 23);
-            comboBox7.TabIndex = 13;
-            // 
-            // label7
-            // 
-            label7.Anchor = AnchorStyles.Right;
-            label7.AutoSize = true;
-            label7.Location = new Point(77, 401);
-            label7.Name = "label7";
-            label7.Size = new Size(55, 15);
-            label7.TabIndex = 12;
-            label7.Text = "setting 7:";
-            // 
-            // comboBox6
-            // 
-            comboBox6.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            comboBox6.FormattingEnabled = true;
-            comboBox6.Location = new Point(138, 348);
-            comboBox6.Name = "comboBox6";
-            comboBox6.Size = new Size(130, 23);
-            comboBox6.TabIndex = 11;
-            // 
-            // label6
-            // 
-            label6.Anchor = AnchorStyles.Right;
-            label6.AutoSize = true;
-            label6.Location = new Point(77, 352);
-            label6.Name = "label6";
-            label6.Size = new Size(55, 15);
-            label6.TabIndex = 10;
-            label6.Text = "setting 6:";
-            // 
-            // comboBox5
-            // 
-            comboBox5.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            comboBox5.FormattingEnabled = true;
-            comboBox5.Location = new Point(138, 300);
-            comboBox5.Name = "comboBox5";
-            comboBox5.Size = new Size(130, 23);
-            comboBox5.TabIndex = 9;
-            // 
-            // label5
-            // 
-            label5.Anchor = AnchorStyles.Right;
-            label5.AutoSize = true;
-            label5.Location = new Point(77, 304);
-            label5.Name = "label5";
-            label5.Size = new Size(55, 15);
-            label5.TabIndex = 8;
-            label5.Text = "setting 5:";
-            // 
-            // comboBox4
-            // 
-            comboBox4.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            comboBox4.FormattingEnabled = true;
-            comboBox4.Location = new Point(138, 252);
-            comboBox4.Name = "comboBox4";
-            comboBox4.Size = new Size(130, 23);
-            comboBox4.TabIndex = 7;
-            // 
-            // label4
-            // 
-            label4.Anchor = AnchorStyles.Right;
-            label4.AutoSize = true;
-            label4.Location = new Point(77, 256);
-            label4.Name = "label4";
-            label4.Size = new Size(55, 15);
-            label4.TabIndex = 6;
-            label4.Text = "setting 4:";
-            // 
-            // comboBox3
-            // 
-            comboBox3.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(138, 156);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(130, 23);
-            comboBox3.TabIndex = 5;
-            // 
-            // label3
-            // 
-            label3.Anchor = AnchorStyles.Right;
-            label3.AutoSize = true;
-            label3.Location = new Point(77, 160);
-            label3.Name = "label3";
-            label3.Size = new Size(55, 15);
-            label3.TabIndex = 4;
-            label3.Text = "setting 3:";
-            // 
-            // comboBox2
-            // 
-            comboBox2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(138, 108);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(130, 23);
-            comboBox2.TabIndex = 3;
-            // 
-            // label2
-            // 
-            label2.Anchor = AnchorStyles.Right;
-            label2.AutoSize = true;
-            label2.Location = new Point(77, 112);
-            label2.Name = "label2";
-            label2.Size = new Size(55, 15);
-            label2.TabIndex = 2;
-            label2.Text = "setting 2:";
-            // 
-            // label1
-            // 
-            label1.Anchor = AnchorStyles.Right;
-            label1.AutoSize = true;
-            label1.Location = new Point(77, 64);
-            label1.Name = "label1";
-            label1.Size = new Size(55, 15);
-            label1.TabIndex = 0;
-            label1.Text = "setting 1:";
-            // 
-            // comboBox1
-            // 
-            comboBox1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(138, 60);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(130, 23);
-            comboBox1.TabIndex = 1;
-            // 
-            // countSetLbl
-            // 
-            countSetLbl.Anchor = AnchorStyles.Left;
-            countSetLbl.AutoSize = true;
-            tableLayoutPanel4.SetColumnSpan(countSetLbl, 2);
-            countSetLbl.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            countSetLbl.Location = new Point(3, 205);
-            countSetLbl.Name = "countSetLbl";
-            countSetLbl.Size = new Size(165, 21);
-            countSetLbl.TabIndex = 15;
-            countSetLbl.Text = "Countdown Settings";
-            // 
             // countdownTimer
             // 
             countdownTimer.Interval = 10;
@@ -654,9 +430,6 @@
             ((System.ComponentModel.ISupportInitialize)minuteUD).EndInit();
             ((System.ComponentModel.ISupportInitialize)hourUD).EndInit();
             tableLayoutPanel3.ResumeLayout(false);
-            settingsTab.ResumeLayout(false);
-            tableLayoutPanel4.ResumeLayout(false);
-            tableLayoutPanel4.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -679,30 +452,12 @@
         private Label secondLbl;
         private NumericUpDown minuteUD;
         private Label minuteLbl;
-        private TabPage settingsTab;
         private TableLayoutPanel tableLayoutPanel3;
         private Button pauseCountdownBtn;
         private Button startCountdownBtn;
         private Button cancelCountdownBtn;
         private TableLayoutPanel tableLayoutPanel5;
         private Label remainingCountLbl;
-        private TableLayoutPanel tableLayoutPanel4;
-        private ComboBox comboBox7;
-        private Label label7;
-        private ComboBox comboBox6;
-        private Label label6;
-        private ComboBox comboBox5;
-        private Label label5;
-        private ComboBox comboBox4;
-        private Label label4;
-        private ComboBox comboBox3;
-        private Label label3;
-        private ComboBox comboBox2;
-        private Label label2;
-        private Label label1;
-        private ComboBox comboBox1;
-        private Label stopSetLbl;
-        private Label countSetLbl;
         private DataGridViewTextBoxColumn lapCol;
         private DataGridViewTextBoxColumn startCol;
         private DataGridViewTextBoxColumn lapEndCol;
