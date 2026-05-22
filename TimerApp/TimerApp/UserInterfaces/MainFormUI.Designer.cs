@@ -379,6 +379,7 @@
             pauseCountdownBtn.TabIndex = 2;
             pauseCountdownBtn.Text = "&Pause";
             pauseCountdownBtn.UseVisualStyleBackColor = false;
+            pauseCountdownBtn.Click += pauseCountdownBtn_Click;
             // 
             // startCountdownBtn
             // 
@@ -410,11 +411,11 @@
             remainingCountLbl.Anchor = AnchorStyles.None;
             remainingCountLbl.AutoSize = true;
             remainingCountLbl.Font = new Font("Segoe UI", 22F);
-            remainingCountLbl.Location = new Point(68, 176);
+            remainingCountLbl.Location = new Point(49, 176);
             remainingCountLbl.Name = "remainingCountLbl";
-            remainingCountLbl.Size = new Size(128, 41);
+            remainingCountLbl.Size = new Size(167, 41);
             remainingCountLbl.TabIndex = 9;
-            remainingCountLbl.Text = "00:00:00";
+            remainingCountLbl.Text = "00:00:00.00";
             // 
             // settingsTab
             // 
@@ -622,6 +623,7 @@
             // 
             // countdownTimer
             // 
+            countdownTimer.Interval = 10;
             countdownTimer.Tick += countdownTimer_Tick;
             // 
             // mainForm

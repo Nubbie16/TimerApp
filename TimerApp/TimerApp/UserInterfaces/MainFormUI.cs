@@ -109,7 +109,7 @@ namespace TimerApp
         private void countdownTimer_Tick(object sender, EventArgs e)
         {
             TimeSpan remainingTime = countdownTime - countdown.Elapsed;
-            remainingCountLbl.Text = remainingTime.ToString(@"hh\:mm\:ss");
+            remainingCountLbl.Text = remainingTime.ToString(@"hh\:mm\:ss\.ff");
 
             if (remainingTime <= TimeSpan.Zero)
             {
@@ -125,7 +125,18 @@ namespace TimerApp
 
         private void startCountdownBtn_Click(object sender, EventArgs e)
         {
-            int selectedHours = ((int)hourUD.Value * 60) * 60;     //Selected hours converted to seconds
+            hourUD.Enabled = false;
+            minuteUD.Enabled = false;
+            secondUD.Enabled = false;
+
+            if (countdown.ElapsedTicks > 0)
+            {
+                startCountdownBtn.Text = "&Start";
+                countdown.Start();
+                countdownTimer.Start();
+
+            } else {
+                int selectedHours = ((int)hourUD.Value * 60) * 60;     //Selected hours converted to seconds
             int selectedMinutes = (int)minuteUD.Value * 60;        //Selected minutes converted to seconds
             int selectedSeconds = (int)secondUD.Value;             //Selected secounds
 
@@ -138,6 +149,7 @@ namespace TimerApp
             countdownTimer.Start();
 
             remainingCountLbl.Text = countdownTime.ToString(@"hh\:mm\:ss");
+            }
 
         }
 
@@ -147,7 +159,7 @@ namespace TimerApp
             {
                 return;
 
-            } 
+            }
 
             isMessageBoxShowing = true;
             beepTokenSource = new CancellationTokenSource();
@@ -164,9 +176,16 @@ namespace TimerApp
                 }
             });
             MessageBox.Show("Time is up!", "Countdown");
-                
+
             beepTokenSource.Cancel();
             isMessageBoxShowing = false;
+        }
+
+        private void pauseCountdownBtn_Click(object sender, EventArgs e)
+        {
+            countdown.Stop();
+            countdownTimer.Stop();
+            startCountdownBtn.Text = "&Resume";
         }
     }
 }
