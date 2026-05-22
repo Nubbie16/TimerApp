@@ -128,9 +128,7 @@ namespace TimerApp
 
             if (countdown.ElapsedTicks > 0)
             {
-                hourUD.Enabled = false;
-                minuteUD.Enabled = false;
-                secondUD.Enabled = false;
+                ToggleTimeSelectionControls();
 
                 startCountdownBtn.Text = "&Start";
                 countdown.Start();
@@ -157,6 +155,24 @@ namespace TimerApp
 
                 remainingCountLbl.Text = countdownTime.ToString(@"hh\:mm\:ss");
                 }
+            }
+        }
+
+        private void ToggleTimeSelectionControls()         //switchs between enabling and disabling ability to select time
+        {
+            switch (hourUD.Enabled)
+            {
+                case true:
+                    hourUD.Enabled = false;
+                    minuteUD.Enabled = false;
+                    secondUD.Enabled = false;
+                    break;
+
+                case false:
+                    hourUD.Enabled = true;
+                    minuteUD.Enabled = true;
+                    secondUD.Enabled = true;
+                    break;
             }
         }
 
@@ -202,13 +218,16 @@ namespace TimerApp
             countdownTimer.Enabled = false;
             startCountdownBtn.Text = "&Start";
             remainingCountLbl.Text = "00:00:00.00";
-            hourUD.Enabled = true;
+
+            ToggleTimeSelectionControls();
+
             hourUD.Value = 0;
-            minuteUD.Enabled = true;
             minuteUD.Value = 0;
-            secondUD.Enabled = true;
             secondUD.Value = 0;
 
         }
+
+        ////Settings Tab Logic////
+
     }
 }
