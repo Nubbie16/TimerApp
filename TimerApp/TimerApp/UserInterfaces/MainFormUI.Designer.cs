@@ -57,6 +57,8 @@
             startCountdownBtn = new Button();
             cancelCountdownBtn = new Button();
             remainingCountLbl = new Label();
+            settingsTab = new TabPage();
+            rickRollingCB = new CheckBox();
             countdownTimer = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)timeTableGV).BeginInit();
             tableLayoutPanel2.SuspendLayout();
@@ -70,6 +72,7 @@
             ((System.ComponentModel.ISupportInitialize)minuteUD).BeginInit();
             ((System.ComponentModel.ISupportInitialize)hourUD).BeginInit();
             tableLayoutPanel3.SuspendLayout();
+            settingsTab.SuspendLayout();
             SuspendLayout();
             // 
             // startStopwatchBtn
@@ -175,6 +178,7 @@
             // 
             tabControl.Controls.Add(stopTab);
             tabControl.Controls.Add(downTab);
+            tabControl.Controls.Add(settingsTab);
             tabControl.Dock = DockStyle.Fill;
             tabControl.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tabControl.Location = new Point(0, 0);
@@ -399,6 +403,27 @@
             remainingCountLbl.TabIndex = 9;
             remainingCountLbl.Text = "00:00:00.00";
             // 
+            // settingsTab
+            // 
+            settingsTab.Controls.Add(rickRollingCB);
+            settingsTab.Location = new Point(4, 24);
+            settingsTab.Name = "settingsTab";
+            settingsTab.Padding = new Padding(3);
+            settingsTab.Size = new Size(271, 433);
+            settingsTab.TabIndex = 2;
+            settingsTab.Text = "Settings";
+            settingsTab.UseVisualStyleBackColor = true;
+            // 
+            // rickRollingCB
+            // 
+            rickRollingCB.AutoSize = true;
+            rickRollingCB.Location = new Point(100, 206);
+            rickRollingCB.Name = "rickRollingCB";
+            rickRollingCB.Size = new Size(64, 19);
+            rickRollingCB.TabIndex = 0;
+            rickRollingCB.Text = "Chaos?";
+            rickRollingCB.UseVisualStyleBackColor = true;
+            // 
             // countdownTimer
             // 
             countdownTimer.Interval = 10;
@@ -432,6 +457,8 @@
             ((System.ComponentModel.ISupportInitialize)minuteUD).EndInit();
             ((System.ComponentModel.ISupportInitialize)hourUD).EndInit();
             tableLayoutPanel3.ResumeLayout(false);
+            settingsTab.ResumeLayout(false);
+            settingsTab.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -454,10 +481,6 @@
         private Label secondLbl;
         private NumericUpDown minuteUD;
         private Label minuteLbl;
-        private TableLayoutPanel tableLayoutPanel3;
-        private Button pauseCountdownBtn;
-        private Button startCountdownBtn;
-        private Button cancelCountdownBtn;
         private TableLayoutPanel tableLayoutPanel5;
         private Label remainingCountLbl;
         private DataGridViewTextBoxColumn lapCol;
@@ -465,5 +488,11 @@
         private DataGridViewTextBoxColumn lapEndCol;
         private TableLayoutPanel tableLayoutPanel6;
         private Label currentStopwatchLbl;
+        private TableLayoutPanel tableLayoutPanel3;
+        private Button pauseCountdownBtn;
+        private Button startCountdownBtn;
+        private Button cancelCountdownBtn;
+        private TabPage settingsTab;
+        private CheckBox rickRollingCB;
     }
 }

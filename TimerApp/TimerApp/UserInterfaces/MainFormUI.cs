@@ -8,6 +8,7 @@
 // GitHub Repository: https://github.com/Nubbie16/TimerApp
 
 using System.Diagnostics;
+using System.Media;
 
 namespace TimerApp
 {
@@ -114,8 +115,13 @@ namespace TimerApp
 
                 remainingCountLbl.Text = "00:00:00.00";
 
-                ShowCountdownMessage();
+                if (rickRollingCB.Checked)
+                {
+                    RickRolled();
 
+                } else {
+                    ShowCountdownMessage();
+                }
             }
         }
 
@@ -223,6 +229,37 @@ namespace TimerApp
             hourUD.Value = 0;
             minuteUD.Value = 0;
             secondUD.Value = 0;
+        }
+
+        private SoundPlayer alarmPlayer;
+
+        private void RickRolled()
+        {
+            if (isMessageBoxShowing)
+            {
+                return;
+            }
+
+            isMessageBoxShowing = true;
+
+            string soundPath = Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
+                "Assets",
+                "Sounds",
+                "RickRolled.wav"
+            );
+
+            alarmPlayer = new SoundPlayer(soundPath);
+            alarmPlayer.PlayLooping();
+
+            MessageBox.Show("Time is up!", "Countdown");
+            MessageBox.Show("Not yet, click again.", "Countdown");
+            MessageBox.Show("You thought that was it?", "Countdown");
+            MessageBox.Show("Nope. Still going.", "Countdown");
+            MessageBox.Show("You have been timer-rolled.", "Countdown");
+            MessageBox.Show("Just kidding, you gotta terminate the program yourself!", "Countdown");
+
+            isMessageBoxShowing = false;
         }
     }
 }

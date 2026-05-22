@@ -6,11 +6,18 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <ApplicationIcon>Icons\icon32.ico</ApplicationIcon>
+    <ApplicationIcon>Assets\Icons\icon32.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="Icons\icon32.ico" />
+    <None Remove="Assets\Sounds\RickRolled.wav" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\Icons\icon32.ico" />
+    <Content Include="Assets\Sounds\RickRolled.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
