@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
             startStopwatchBtn = new Button();
             stopStopwatchBtn = new Button();
             stopwatchTimer = new System.Windows.Forms.Timer(components);
@@ -409,6 +410,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(279, 461);
             Controls.Add(tabControl);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "mainForm";
