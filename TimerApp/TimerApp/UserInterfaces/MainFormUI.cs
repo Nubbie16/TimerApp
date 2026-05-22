@@ -10,6 +10,7 @@
 using System.Diagnostics;
 using System.Media;
 using System.DirectoryServices.ActiveDirectory;
+using System.Threading.Tasks;
 
 namespace TimerApp
 {
@@ -101,8 +102,9 @@ namespace TimerApp
         ////Countdown Tab Logic////
 
         Stopwatch countdown = new Stopwatch();
-
         TimeSpan countdownTime = TimeSpan.Zero;
+        bool isMessageBoxShowing = false;
+        CancellationTokenSource beepTokenSource;
 
         private void countdownTimer_Tick(object sender, EventArgs e)
         {
@@ -116,10 +118,7 @@ namespace TimerApp
 
                 remainingCountLbl.Text = "00:00:00";
 
-                for (int x = 0; x < 5; x++) {
-                    Console.Beep(1500, 500);
-                }
-                MessageBox.Show("Time is up!");
+                ShowCountdownMessage();
 
             }
         }
@@ -140,6 +139,34 @@ namespace TimerApp
 
             remainingCountLbl.Text = countdownTime.ToString(@"hh\:mm\:ss");
 
+        }
+
+        private void ShowCountdownMessage()     //system makes repeated sound until messageBox is acknowledged
+        {
+            if (isMessageBoxShowing)
+            {
+                return;
+
+            } 
+
+            isMessageBoxShowing = true;
+            beepTokenSource = new CancellationTokenSource();
+            Task.Run(() =>
+            {
+                while (!beepTokenSource.Token.IsCancellationRequested)
+                {
+                    Console.Beep(1500, 500);
+                    Thread.Sleep(500);
+                    Console.Beep(1000, 500);
+                    Thread.Sleep(500);
+                    Console.Beep(2000, 500);
+                    Thread.Sleep(500);
+                }
+            });
+            MessageBox.Show("Time is up!", "Countdown");
+                
+            beepTokenSource.Cancel();
+            isMessageBoxShowing = false;
         }
     }
 }
