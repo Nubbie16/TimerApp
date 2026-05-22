@@ -125,32 +125,39 @@ namespace TimerApp
 
         private void startCountdownBtn_Click(object sender, EventArgs e)
         {
-            hourUD.Enabled = false;
-            minuteUD.Enabled = false;
-            secondUD.Enabled = false;
 
             if (countdown.ElapsedTicks > 0)
             {
+                hourUD.Enabled = false;
+                minuteUD.Enabled = false;
+                secondUD.Enabled = false;
+
                 startCountdownBtn.Text = "&Start";
                 countdown.Start();
                 countdownTimer.Start();
 
             } else {
                 int selectedHours = ((int)hourUD.Value * 60) * 60;     //Selected hours converted to seconds
-            int selectedMinutes = (int)minuteUD.Value * 60;        //Selected minutes converted to seconds
-            int selectedSeconds = (int)secondUD.Value;             //Selected secounds
+                int selectedMinutes = (int)minuteUD.Value * 60;        //Selected minutes converted to seconds
+                int selectedSeconds = (int)secondUD.Value;             //Selected secounds
 
-            int selectedTimeInSec = selectedHours + selectedMinutes + selectedSeconds;      //Total selected time in seconds  
+                int selectedTimeInSec = selectedHours + selectedMinutes + selectedSeconds;      //Total selected time in seconds  
 
-            countdownTime = TimeSpan.FromSeconds(selectedTimeInSec);
+                if (selectedTimeInSec == 0)
+                {
+                    MessageBox.Show("Select time greater than 0.", "Countdown");
+                    return;
+                } else {
 
-            countdown.Reset();
-            countdown.Start();
-            countdownTimer.Start();
+                    countdownTime = TimeSpan.FromSeconds(selectedTimeInSec);
 
-            remainingCountLbl.Text = countdownTime.ToString(@"hh\:mm\:ss");
+                countdown.Reset();
+                countdown.Start();
+                countdownTimer.Start();
+
+                remainingCountLbl.Text = countdownTime.ToString(@"hh\:mm\:ss");
+                }
             }
-
         }
 
         private void ShowCountdownMessage()     //system makes repeated sound until messageBox is acknowledged
@@ -186,6 +193,22 @@ namespace TimerApp
             countdown.Stop();
             countdownTimer.Stop();
             startCountdownBtn.Text = "&Resume";
+        }
+
+        private void cancelCountdownBtn_Click(object sender, EventArgs e)
+        {
+            
+            countdown.Reset();
+            countdownTimer.Enabled = false;
+            startCountdownBtn.Text = "&Start";
+            remainingCountLbl.Text = "00:00:00.00";
+            hourUD.Enabled = true;
+            hourUD.Value = 0;
+            minuteUD.Enabled = true;
+            minuteUD.Value = 0;
+            secondUD.Enabled = true;
+            secondUD.Value = 0;
+
         }
     }
 }

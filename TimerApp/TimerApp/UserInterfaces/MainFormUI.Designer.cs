@@ -405,6 +405,7 @@
             cancelCountdownBtn.TabIndex = 1;
             cancelCountdownBtn.Text = "&Cancel";
             cancelCountdownBtn.UseVisualStyleBackColor = false;
+            cancelCountdownBtn.Click += cancelCountdownBtn_Click;
             // 
             // remainingCountLbl
             // 
