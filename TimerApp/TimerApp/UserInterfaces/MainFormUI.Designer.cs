@@ -55,7 +55,7 @@
             pauseCountdownBtn = new Button();
             startCountdownBtn = new Button();
             cancelCountdownBtn = new Button();
-            remainingLbl = new Label();
+            remainingCountLbl = new Label();
             settingsTab = new TabPage();
             tableLayoutPanel4 = new TableLayoutPanel();
             stopSetLbl = new Label();
@@ -259,7 +259,7 @@
             tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel5.Controls.Add(tableLayoutPanel1, 0, 0);
             tableLayoutPanel5.Controls.Add(tableLayoutPanel3, 0, 2);
-            tableLayoutPanel5.Controls.Add(remainingLbl, 0, 1);
+            tableLayoutPanel5.Controls.Add(remainingCountLbl, 0, 1);
             tableLayoutPanel5.Dock = DockStyle.Fill;
             tableLayoutPanel5.Location = new Point(3, 3);
             tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -391,6 +391,7 @@
             startCountdownBtn.TabIndex = 0;
             startCountdownBtn.Text = "St&art";
             startCountdownBtn.UseVisualStyleBackColor = false;
+            startCountdownBtn.Click += startCountdownBtn_Click;
             // 
             // cancelCountdownBtn
             // 
@@ -404,16 +405,16 @@
             cancelCountdownBtn.Text = "&Cancel";
             cancelCountdownBtn.UseVisualStyleBackColor = false;
             // 
-            // remainingLbl
+            // remainingCountLbl
             // 
-            remainingLbl.Anchor = AnchorStyles.None;
-            remainingLbl.AutoSize = true;
-            remainingLbl.Font = new Font("Segoe UI", 22F);
-            remainingLbl.Location = new Point(51, 176);
-            remainingLbl.Name = "remainingLbl";
-            remainingLbl.Size = new Size(162, 41);
-            remainingLbl.TabIndex = 9;
-            remainingLbl.Text = "[hh:mm:ss]";
+            remainingCountLbl.Anchor = AnchorStyles.None;
+            remainingCountLbl.AutoSize = true;
+            remainingCountLbl.Font = new Font("Segoe UI", 22F);
+            remainingCountLbl.Location = new Point(68, 176);
+            remainingCountLbl.Name = "remainingCountLbl";
+            remainingCountLbl.Size = new Size(128, 41);
+            remainingCountLbl.TabIndex = 9;
+            remainingCountLbl.Text = "00:00:00";
             // 
             // settingsTab
             // 
@@ -619,6 +620,10 @@
             countSetLbl.TabIndex = 15;
             countSetLbl.Text = "Countdown Settings";
             // 
+            // countdownTimer
+            // 
+            countdownTimer.Tick += countdownTimer_Tick;
+            // 
             // mainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -677,7 +682,7 @@
         private Button startCountdownBtn;
         private Button cancelCountdownBtn;
         private TableLayoutPanel tableLayoutPanel5;
-        private Label remainingLbl;
+        private Label remainingCountLbl;
         private TableLayoutPanel tableLayoutPanel4;
         private ComboBox comboBox7;
         private Label label7;

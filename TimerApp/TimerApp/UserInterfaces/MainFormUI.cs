@@ -8,15 +8,13 @@
 // GitHub Repository: https://github.com/Nubbie16/TimerApp
 
 using System.Diagnostics;
+using System.Media;
+using System.DirectoryServices.ActiveDirectory;
 
 namespace TimerApp
 {
     public partial class mainForm : Form
     {
-        Stopwatch stopwatch = new Stopwatch();
-        int lapCount = 0;
-
-        string currentStopwatch = "";
 
         public mainForm()
         {
@@ -27,6 +25,11 @@ namespace TimerApp
         {
             this.Text = tabControl.SelectedTab.Text;
         }
+
+        ////Stopwatch Tab Logic////
+
+        private Stopwatch stopwatch = new Stopwatch();
+        private int lapCount = 0;
 
         private void StopwatchTimer_Tick(object sender, EventArgs e)
         {
@@ -46,14 +49,16 @@ namespace TimerApp
                 timeTableGV.Visible = true;
                 ShowNewLap();
 
-            } else if (stopwatch.IsRunning != true)                             //if stopwatch was "stopped" and sstarted back
+            }
+            else if (stopwatch.IsRunning != true)                             //if stopwatch was "stopped" and sstarted back
             {
                 stopwatch.Start();
                 stopwatchTimer.Start();
                 startStopwatchBtn.Text = "&Lap";
 
             }
-            else {                                                            //if user wanted to set a lap time
+            else
+            {                                                            //if user wanted to set a lap time
                 lapCount += 1;
                 ShowNewLap();
 
@@ -82,7 +87,7 @@ namespace TimerApp
         private void ShowNewLap()
         {
             int rowIndex = timeTableGV.Rows.Add(
-                                    lapCount + 1, 
+                                    lapCount + 1,
                                     stopwatch.Elapsed.ToString(@"hh\:mm\:ss"),
                                     stopwatch.Elapsed.ToString(@"hh\:mm\:ss")
                                     );
@@ -92,5 +97,49 @@ namespace TimerApp
             timeTableGV.FirstDisplayedScrollingRowIndex = rowIndex;         //Scrolls to current lap time
         }
 
+
+        ////Countdown Tab Logic////
+
+        Stopwatch countdown = new Stopwatch();
+
+        TimeSpan countdownTime = TimeSpan.Zero;
+
+        private void countdownTimer_Tick(object sender, EventArgs e)
+        {
+            TimeSpan remainingTime = countdownTime - countdown.Elapsed;
+            remainingCountLbl.Text = remainingTime.ToString(@"hh\:mm\:ss");
+
+            if (remainingTime <= TimeSpan.Zero)
+            {
+                countdown.Stop();
+                countdownTimer.Stop();
+
+                remainingCountLbl.Text = "00:00:00";
+
+                for (int x = 0; x < 5; x++) {
+                    Console.Beep(1500, 500);
+                }
+                MessageBox.Show("Time is up!");
+
+            }
+        }
+
+        private void startCountdownBtn_Click(object sender, EventArgs e)
+        {
+            int selectedHours = ((int)hourUD.Value * 60) * 60;     //Selected hours converted to seconds
+            int selectedMinutes = (int)minuteUD.Value * 60;        //Selected minutes converted to seconds
+            int selectedSeconds = (int)secondUD.Value;             //Selected secounds
+
+            int selectedTimeInSec = selectedHours + selectedMinutes + selectedSeconds;      //Total selected time in seconds  
+
+            countdownTime = TimeSpan.FromSeconds(selectedTimeInSec);
+
+            countdown.Reset();
+            countdown.Start();
+            countdownTimer.Start();
+
+            remainingCountLbl.Text = countdownTime.ToString(@"hh\:mm\:ss");
+
+        }
     }
 }
